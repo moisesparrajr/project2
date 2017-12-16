@@ -1,3 +1,4 @@
+
 <?php session_start()?>
 <?php
 $errors = "";
@@ -5,7 +6,7 @@ $errors = "";
  if (isset($_POST['submit'])) {
     if (empty($_POST['task'])) {
       $errors = "You must fill in the task";
-      echo "empty";
+     
     }else{
       $task = $_POST['task'];
       $due = $_POST['due'];
@@ -22,12 +23,34 @@ $errors = "";
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
 <style>
 body {
   margin: 0;
   min-width: 250px;
   background-color: #ACD1D1;
+  
 }
+
+h3 {
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  color: white !important;
+  font-size: 16px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 26.4px;
+  background: linear-gradient(#99ceff, #1a90ff);
+  height: 1000px;
+  color: #7E807E;
+  margin: 50px;
+}
+
 
 /* Include the padding and border in an element's total width and height */
 * {
@@ -88,6 +111,7 @@ ul li.checked::before {
   width: 7px;
 }
 
+
 /* Style the close button */
 .close {
   position: absolute;
@@ -142,10 +166,10 @@ input {
   background-color: #bbb;
 }
 </style>
-</head>
+
 <body>
 
-
+<div class="container">
 <h1>INCOMPLETE TASKS </h1>
 <?php  
 
@@ -214,12 +238,13 @@ echo "
     <input type="text" name="due" class="task_input" placeholder="Due Date: yyyy-mm-dd">
     
 </form>
-
+ 
 <?php if (isset($errors)) { ?>
   <p><?php echo $errors; ?></p>
 <?php } ?>
+</div>
 
-
+<div class="container">
 <!-- ===================================================================== -->
 
 <!-- ======================== COMPLETED TASK LIST ======================== -->
@@ -271,8 +296,7 @@ echo "
 // ===========================================================================
 
 ?>
-
-
+</div>
 
 <br>
 <br>
