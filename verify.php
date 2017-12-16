@@ -57,7 +57,7 @@ if(runQuery($sql)==true){
 		$results = runQuery($sql);		
 		foreach($results as $row){
 			echo "Hello " . $row["fname"]. " " . $row["lname"] . "<br><br>";
-			echo "Welcome to the To Do Applicationt! <br><br>";
+			echo "Welcome to the To Do Application! <br><br>";
 			include 'user.php';
 		}			
 	}

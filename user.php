@@ -29,12 +29,26 @@ $errors = "";
 body {
   margin: 0;
   min-width: 250px;
-  background-color: #ACD1D1;
   
 }
 
 h3 {
   color: #ffffff;
+}
+
+
+table, td, tr{
+    /*border: 2px solid #4c677f;*/
+    background: #cce6ff;
+    border-collapse: collapse;
+    border: 3px solid #add7ff;
+    color: black;
+    padding: 0 10px 0 10px;
+}
+
+th{
+  background: #add7ff;
+
 }
 
 body {
@@ -127,11 +141,11 @@ ul li.checked::before {
 
 /* Style the header */
 .header {
-  background-color: #ACD1D1;
   padding: 30px 40px;
   color: white;
   text-align: center;
 }
+
 
 /* Clear floats after the header */
 .header:after {
@@ -151,20 +165,77 @@ input {
 
 /* Style the "Add" button */
 .addBtn {
-  padding: 10px;
-  width: 25%;
-  background: #d9d9d9;
-  color: #555;
+  padding: 0px 0;
+  width: 15%;
+  background: #cce6ff;
+  color: #4c677f;
   float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin:10px;
+  line-height: 1.7;
+
+}
+
+.inputTask{
+  width:30%;
+  background #add7ff; 
+  margin:5px;
+
+}
+
+
+.addBtn:hover {
+  background-color: #bbb;
+
+}
+
+.inputText{
+  width: 100%
+  line-height: .5;
+  padding:2px;
+}
+
+#editInput{
+  width: 60%;
+  line-height: .5;
+  padding:2px;
+}
+.btn-edit{
+  padding: 2px;
+  color: white;
+  width: 40%;
+  background: #4c677f;
   text-align: center;
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
 }
 
-.addBtn:hover {
-  background-color: #bbb;
+.edit{
+  width:35%;
 }
+
+.btn-complete{
+  padding: 2px;
+  color: white;
+  width: 10%;
+  background: #4c677f;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.task{
+  width:40%;
+}
+
+
+
+
 </style>
 
 <body>
@@ -173,75 +244,70 @@ input {
 <h1>INCOMPLETE TASKS </h1>
 <?php  
 
-// $sql = "SELECT * FROM todos WHERE email='$email'";
 
-//select all the results from the table todos where the task is complete (isdone=1)
 $sql = "SELECT * FROM todos WHERE isdone = 0";
 $results = runQuery($sql);
 if(count($results) > 0){
 
+//
 echo "
-        <table border=\"1\">
+        <table>
               <tr>
                 <th>Select</th>
                 <th>Task</th>
                 <th>Due Date</th>
+                <th>x</th>
+                <th>Edit</th>
               </tr>";
 
   foreach($results as $row){
+
+
   echo "<tr>";
-  // echo '<td>
-  //       <form action="taskDone.php?" method="post">
-  //         <input type="hidden" name="id" value="'.$row["id"].'">
-  //         <input type="checkbox" name="complete" align="center">
-  //       </form>
-  //     </td>';
+  
   echo "<td><input type='checkbox' name='complete' value=" . $row['id'] ." />"  . "</td>";
-  echo "<td>" . $row["message"]  . "</td>";
+  echo "<td class='task'>" . $row["message"]  . "</td>";
   echo "<td>" . $row["duedate"]  . "</td>";
           
   echo "<td><a href='dltTask.php?id=".$row['id']."'>DELETE</a></td>";
 
-  echo "<form action=\"edit.php?id=".$row['id']."\" method='POST' target='_self'>";
-  echo "<input id='editInput' type='text' name='editTask'>";
-  echo "<input id='editSubmit' type='submit' value='Edit Task'>";
-  echo "</form>";
-
-        echo '</tr>';
+  echo "<td class='edit'><form action=\"edit.php?id=".$row['id']."\" method='POST' target='_self'>";
+  echo "<input class='inputText' id='editInput' type='text' name='editTask'>";
+  echo "<input class='btn-edit' id='editSubmit' type='submit' value='Edit Task'>";
+  echo "</form></td>";
 
 
-    $getMessage = $row['message'];
-    $getDue = $row['duedate'];
+  echo '</tr>';
 
-          // <td><a href=\"dltTask.php\?id={$row['id']}">Delete</a></td>"     
   }
 
   echo "</table>";
-
 
 }else {
   echo "No results to be displayed";
 }
 
 
-
 ?>
 
-<!-- ======================= ADD NEW TASK (BUTTON) ======================= -->
-<form method="post" action="taskDone.php" >
-  <button type="submit" name="btn-complete" class="signin" href="taskDone.php"><b>COMPLETE</b></button>
-</form>
 
-<form method="post" action="verify.php" class="header">
-    <button type="submit" name="submit" id="addBtn" size="small" class="addBtn">Add</button>
-    <input type="text" name="task" class="task_input" placeholder="add task">
-    <input type="text" name="due" class="task_input" placeholder="Due Date: yyyy-mm-dd">
-    
+<!-- ======================= ADD NEW TASK (BUTTON) ======================= -->
+<div>
+<form method='post' action='taskDone.php' >
+ <button type='submit' name='btn-complete' class='btn-complete'>COMPLETE</button>
+</form> <br><br>
+
+<form method="post" action="verify.php" class="header">  
+    <input type="text" name="task" class="inputTask" placeholder="add task">
+    <input type="text" name="due" class="inputTask" placeholder="Due Date: yyyy-mm-dd">
+    <button type="submit" name="submit" id="addBtn" size="small" class="addBtn">Add</button>    
 </form>
+</div>
  
 <?php if (isset($errors)) { ?>
   <p><?php echo $errors; ?></p>
 <?php } ?>
+
 </div>
 
 <div class="container">
