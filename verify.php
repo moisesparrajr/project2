@@ -1,11 +1,32 @@
-<title>Home</title>
+
 <?php session_start();?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <h1>IS218 Final Project</h1>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<h1>IS218 Final Project</h1>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Home</title>
+<style type="text/css">
+b{
+	font-size: 18pt;
+	text-align: center;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 26.4px;
+  background: linear-gradient(#99ceff, #1a90ff);
+	height: 1000px;
+  color: white;
+}
+
+</style>
+
 </head>
 
 <body>
@@ -35,7 +56,7 @@ if(runQuery($sql)==true){
 		$sql = "SELECT fname,lname FROM accounts WHERE email='$email'";
 		$results = runQuery($sql);		
 		foreach($results as $row){
-			echo "Hello" . $row["fname"]. " " . $row["lname"] . "<br><br>";
+			echo "Hello " . $row["fname"]. " " . $row["lname"] . "<br><br>";
 			echo "Welcome to the To Do Applicationt! <br><br>";
 			include 'user.php';
 		}			

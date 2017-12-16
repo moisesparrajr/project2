@@ -20,35 +20,131 @@ input[id=email], input[id=password]{
     display: inline-block;
     border: 1.5px solid #ccc;
     box-sizing: border-box;
+
 }
 
+h3 {
+  color: #ffffff;
+}
+small {
+  color: #ffffff;
+  font-size: 13px;
+}
+
+/*signup button*/
+button{
+   font-family: "Open Sans";
+    color: white;
+    background-color: #006699;
+    padding: 11px 13px; /*elizabeth changed the first value */
+    margin: 8px 0;
+    border: 0px solid #ccc;
+       border: 0px solid #ccc;
+    border-radius:;
+    cursor: pointer;
+    width: 15%;
+
+}
+
+button:hover {
+  background-color: solid;
+}
+
+ /*placeholder text size*/
+input,
+input::-webkit-input-placeholder {
+    font-size: 13px;
+    font-color: #7E807E;
+    line-height: 2;
+}
+
+.signupbutton {
+    float: center;
+    width: 70%<br>;
+}
+
+
+.container {
+    padding: 4px;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+       width: 100%;
+    }
+}
+
+
 body {
-  font-family: "Open Sans";
-  font-size: 16px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 500;
-  line-height: 26.4px;
-  background-color: #ACD1D1;
-  color: white;
+        font-family: 'Lato', sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 500;
+        line-height: 26.4px;
+        background: linear-gradient(#99ceff, #1a90ff);
+        height: 1000px;
+        color: #7E807E;
 }
 
 
 /*signup button*/
-button {
+button{
+   font-family: 'Lato', sans-serif;
     color: white;
-    background-color: #ADA5A5;
-    padding: 8px 13px;
+    background-color: #006699;
+    padding: 11px 13px; /*elizabeth changed the first value */
     margin: 8px 0;
-    border: 1px solid #ccc;
+    border: 0px solid #ccc;
+       border: 0px solid #ccc;
     border-radius:;
     cursor: pointer;
-    width: 20%;
+    width: 15%;
+
 }
 
- 
-button:hover { 
+button:hover {
   background-color: solid;
+}
+
+ /*placeholder text size*/
+input,
+input::-webkit-input-placeholder {
+    font-size: 13px;
+    font-color: #7E807E;
+    line-height: 2;
+}
+
+.signupbutton {
+    float: center;
+    width: 70%<br>;
+}
+
+
+.container {
+    padding: 4px;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+       width: 100%;
+    }
 }
 
  /*placeholder text size*/
