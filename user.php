@@ -178,12 +178,10 @@ echo "
           
   echo "<td><a href='dltTask.php?id=".$row['id']."'>DELETE</a></td>";
 
- echo '<td>
-        <form action="actions.php?controller=editController" method="post">
-          <input type="hidden" name="id" value="'.$row["id"].'">
-          <input type="submit" name="edit" value="Edit" align="center">
-        </form>
-      </td>';
+  echo "<form action=\"edit.php?id=".$row['id']."\" method='POST' target='_self'>";
+  echo "<input id='editInput' type='text' name='editTask'>";
+  echo "<input id='editSubmit' type='submit' value='Edit Task'>";
+  echo "</form>";
 
         echo '</tr>';
 
@@ -207,13 +205,14 @@ echo "
 
 <!-- ======================= ADD NEW TASK (BUTTON) ======================= -->
 <form method="post" action="taskDone.php" >
-  <button type="submit" name="btn-complete" class="signin" href=""><b>COMPLETE</b></button>
+  <button type="submit" name="btn-complete" class="signin" href="taskDone.php"><b>COMPLETE</b></button>
 </form>
 
 <form method="post" action="verify.php" class="header">
+    <button type="submit" name="submit" id="addBtn" size="small" class="addBtn">Add</button>
     <input type="text" name="task" class="task_input" placeholder="add task">
     <input type="text" name="due" class="task_input" placeholder="Due Date: yyyy-mm-dd">
-    <button type="submit" name="submit" id="addBtn" class="addBtn">Add</button>
+    
 </form>
 
 <?php if (isset($errors)) { ?>
@@ -238,7 +237,7 @@ if(count($results) > 0){
 echo "
         <table border=\"1\">
               <tr>
-                <th>Select</th>
+                
                 <th>Task</th>
                 <th>Due Date</th>
               </tr>";
@@ -246,7 +245,6 @@ echo "
   foreach($results as $row){
   echo "<tr>
 
-          <td><input type='checkbox' name='check' id='' /> " . "</td> 
           <td>" . $row["message"]  . "</td>
           <td>" . $row["duedate"]  . "</td>
           
@@ -279,77 +277,6 @@ echo "
 <br>
 <br>
 
-
-
-
-
-<div id="myDIV" class="header">
-  <h2 style="margin:5px">To do list</h2>
-  <input type="text" id="myInput" placeholder="add task">
-  <span onclick="newElement()" class="addBtn">Add</span>
-</div>
-
-<ul id="myUL">
-
-</ul>
-
-<script>
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
-
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
-
-// Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
-
-// Create a new list item when clicking on the "Add" button
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("You must write something!");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("myInput").value = "";
-
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
-}
-</script>
 
 </body>
 </html>

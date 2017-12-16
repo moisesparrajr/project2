@@ -3,7 +3,7 @@
 
 require "db.php";
 
-if(isset($_GET['complete'])){
+if(isset($_GET['id'])){
 	$getID = $_GET['id'];
 	echo $getID . "we got ID";
 	$sql = "DELETE FROM todos WHERE id='$getID'";
@@ -11,7 +11,7 @@ if(isset($_GET['complete'])){
 	echo "item deleted";
 	header('location: verify.php');
 }else {
-	echo "No item was delted. ";
+	echo "No item was deleted. ";
 }
 
 ?>

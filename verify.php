@@ -1,9 +1,10 @@
+<title>Home</title>
 <?php session_start();?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    
+    <h1>IS218 Final Project</h1>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
@@ -16,7 +17,6 @@ require "db.php";
   $_SESSION['getEmail'] = $_POST['email'];
   $_SESSION['getPass'] = $_POST['password'];
  } 
-echo "IS218 Project 2: To Do Application <br><br>";
 
 $email = $_SESSION['getEmail'];
 $pass =  $_SESSION['getPass'];
@@ -35,7 +35,7 @@ if(runQuery($sql)==true){
 		$sql = "SELECT fname,lname FROM accounts WHERE email='$email'";
 		$results = runQuery($sql);		
 		foreach($results as $row){
-			echo "Hello " . $row["fname"]. " " . $row["lname"] . "<br><br>";
+			echo "Hello" . $row["fname"]. " " . $row["lname"] . "<br><br>";
 			echo "Welcome to the To Do Applicationt! <br><br>";
 			include 'user.php';
 		}			

@@ -6,6 +6,5 @@ $sql = "UPDATE todos
 		SET isdone = 1
 		WHERE id='$id'";
 runQuery($sql);
-header('Location: user.php');	
+header('Location: verify.php');	
 ?>
-
